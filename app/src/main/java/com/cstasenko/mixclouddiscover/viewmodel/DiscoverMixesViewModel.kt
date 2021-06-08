@@ -1,8 +1,9 @@
-package com.cstasenko.mixclouddiscover
+package com.cstasenko.mixclouddiscover.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import com.cstasenko.mixclouddiscover.repository.MixcloudRepository
 import com.cstasenko.mixclouddiscover.model.MixcloudApiResponseDto
 import kotlinx.coroutines.flow.map
 

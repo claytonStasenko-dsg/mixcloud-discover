@@ -3,8 +3,8 @@ package com.cstasenko.mixclouddiscover.di
 import android.app.Application
 import com.cstasenko.mixclouddiscover.BuildConfig
 import com.cstasenko.mixclouddiscover.MixcloudApiService
-import com.cstasenko.mixclouddiscover.MixcloudRepository
-import com.cstasenko.mixclouddiscover.MixcloudRepositoryImpl
+import com.cstasenko.mixclouddiscover.repository.MixcloudRepository
+import com.cstasenko.mixclouddiscover.repository.MixcloudRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

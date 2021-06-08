@@ -1,4 +1,4 @@
-package com.cstasenko.mixclouddiscover
+package com.cstasenko.mixclouddiscover.di
 
 import androidx.fragment.app.Fragment
 import com.cstasenko.mixclouddiscover.di.ApplicationModule

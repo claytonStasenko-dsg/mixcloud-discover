@@ -1,8 +1,10 @@
 package com.cstasenko.mixclouddiscover
 
 import android.app.Application
+import com.cstasenko.mixclouddiscover.di.ApplicationComponent
 import com.cstasenko.mixclouddiscover.di.ApplicationComponentProvider
 import com.cstasenko.mixclouddiscover.di.ApplicationModule
+import com.cstasenko.mixclouddiscover.di.DaggerApplicationComponent
 
 class MixcloudDiscoverApplication : Application(), ApplicationComponentProvider {
 
