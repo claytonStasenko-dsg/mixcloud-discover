@@ -7,7 +7,7 @@
     android:id="@+id/motion_carousel_layout"
     app:layoutDescription="@xml/view_motion_carousel_scene">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.cstasenko.mixclouddiscover.view.MotionCarouselCard
         android:id="@+id/card0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/card1"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.cstasenko.mixclouddiscover.view.MotionCarouselCard
         android:id="@+id/card1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.cstasenko.mixclouddiscover.view.MotionCarouselCard
         android:id="@+id/card2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.cstasenko.mixclouddiscover.view.MotionCarouselCard
         android:id="@+id/card3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.cstasenko.mixclouddiscover.view.MotionCarouselCard
         android:id="@+id/card4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

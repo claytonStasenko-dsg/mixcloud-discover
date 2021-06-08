@@ -12,9 +12,12 @@ import com.cstasenko.mixclouddiscover.di.ApplicationComponentProvider
 import com.cstasenko.mixclouddiscover.loadImage
 import com.cstasenko.mixclouddiscover.model.MixcloudApiResponseDto
 import com.cstasenko.mixclouddiscover.repository.MixcloudRepository
+import com.cstasenko.mixclouddiscover.view.MotionCarouselCard
 import com.cstasenko.mixclouddiscover.viewmodel.DiscoverMixesViewModel
 import com.cstasenko.mixclouddiscover.viewmodel.DiscoverSearchState
 import com.cstasenko.mixclouddiscover.viewmodel.viewModelBuilderFragmentScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -45,26 +48,99 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentHomeBinding.bind(view)
 
-//        discoverViewModel.mixes.observe(viewLifecycleOwner, {
-//            handleDiscoverState(it, binding)
+        runBlocking {
+            launch {
+                discoverViewModel.mixes.observe(viewLifecycleOwner, {
+                    val response = (it as DiscoverSearchState.OnDataReady).response
+                    binding.carousel.setAdapter(object: Carousel.Adapter {
+                        override fun count(): Int {
+                            return response.data.size
+                        }
+
+                        override fun populate(view: View?, index: Int) {
+                            if (view is MotionCarouselCard) {
+                                view.setCardContent(response.data[index].pictures.medium, response.data[index].name)
+//                                view.loadImage(response.data[index].pictures.medium, response.data[index].name)
+                            }
+                        }
+
+                        override fun onNewItem(index: Int) {
+                            //dont do anything special
+                        }
+
+                    })
+                })
+            }
+        }
+
+//        runBlocking {
+//            launch {
+//                discoverViewModel.mixes.observe(viewLifecycleOwner, {
+//                   val response = (it as DiscoverSearchState.OnDataReady).response
+//                    binding.carousel.setAdapter(object: Carousel.Adapter {
+//                        override fun count(): Int {
+//                            return response.data.size
+//                        }
+//
+//                        override fun populate(view: View?, index: Int) {
+//                            if (view is ImageView) {
+//                                view.loadImage(response.data[index].pictures.medium)
+//                            }
+//                        }
+//
+//                        override fun onNewItem(index: Int) {
+//                            //dont do anything special
+//                        }
+//
+//                    })
+//                })
+//            }
+//        }
+
+
+//        binding.carousel.setAdapter(object: Carousel.Adapter {
+//            override fun count(): Int {
+//                return images.size
+//            }
+//
+//            override fun populate(view: View?, index: Int) {
+//                if (view is ImageView) {
+//                    view.setImageResource(images[index])
+//                }
+//            }
+//
+//            override fun onNewItem(index: Int) {
+//                //dont do anything special
+//            }
+//
 //        })
+    }
 
-        binding.carousel.setAdapter(object: Carousel.Adapter {
-            override fun count(): Int {
-                return images.size
+    private fun setupCarousel(binding: FragmentHomeBinding) {
+        runBlocking {
+            launch {
+                discoverViewModel.mixes.observe(viewLifecycleOwner, {
+                    val response = (it as DiscoverSearchState.OnDataReady).response
+                    binding.carousel.setAdapter(object: Carousel.Adapter {
+                        override fun count(): Int {
+                            return response.data.size
+                        }
+
+                        override fun populate(view: View?, index: Int) {
+                            if (view is MotionCarouselCard) {
+                                view.setCardContent(response.data[index].pictures.medium, response.data[index].name)
+//                                view.loadImage(response.data[index].pictures.medium, response.data[index].name)
+                            }
+                        }
+
+                        override fun onNewItem(index: Int) {
+                            //dont do anything special
+                        }
+
+                    })
+                })
             }
-
-            override fun populate(view: View?, index: Int) {
-                if (view is ImageView) {
-                    view.setImageResource(images[index])
-                }
-            }
-
-            override fun onNewItem(index: Int) {
-                //dont do anything special
-            }
-
-        })
+        }
     }
 
     private fun handleDiscoverState(discoverSearchState: DiscoverSearchState, binding: FragmentHomeBinding) {

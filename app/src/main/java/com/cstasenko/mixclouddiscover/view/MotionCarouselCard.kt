@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.cstasenko.mixclouddiscover.databinding.CardMotionCarouselBinding
 import com.cstasenko.mixclouddiscover.loadImage
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MotionCarouselCard : MotionLayout {
     private var _binding: CardMotionCarouselBinding? = null
@@ -34,7 +36,11 @@ class MotionCarouselCard : MotionLayout {
     }
 
     fun setCardContent(imageUrl: String, imageText: String) {
-        binding.coverImage.loadImage(imageUrl)
-        binding.coverTitle.text = imageText
+        runBlocking {
+            launch {
+                binding.coverImage.loadImage(imageUrl)
+                binding.coverTitle.text = imageText
+            }
+        }
     }
 }
