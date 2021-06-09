@@ -3,13 +3,12 @@ package com.cstasenko.mixclouddiscover.view
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.cstasenko.mixclouddiscover.repository.MixcloudRepository
 import com.cstasenko.mixclouddiscover.R
 import com.cstasenko.mixclouddiscover.databinding.FragmentHomeBinding
 import com.cstasenko.mixclouddiscover.di.ApplicationComponentProvider
+import com.cstasenko.mixclouddiscover.loadImage
 import com.cstasenko.mixclouddiscover.viewmodel.DiscoverMixesViewModel
 import com.cstasenko.mixclouddiscover.viewmodel.DiscoverSearchState
 import com.cstasenko.mixclouddiscover.viewmodel.viewModelBuilderFragmentScope
@@ -43,18 +42,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun handleDiscoverState(discoverSearchState: DiscoverSearchState, binding: FragmentHomeBinding) {
         when (discoverSearchState) {
             is DiscoverSearchState.OnDataReady -> {
-                binding.textHome.text = discoverSearchState.response.data[0].name
-                binding.mixImage.loadImage(discoverSearchState.response.data[0].pictures.medium)
+                binding.textHome.text = discoverSearchState.response[0].name
+                binding.mixImage.loadImage(discoverSearchState.response[0].imageUrlMedium)
             }
             is DiscoverSearchState.OnError -> {
                 //TODO error
             }
         }
-    }
-
-    fun ImageView.loadImage(imageUrl: String) {
-        Glide.with(this)
-            .load(imageUrl)
-            .into(this)
     }
 }
