@@ -4,10 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.cstasenko.mixclouddiscover.model.MixcloudApiResponseDto
+import com.cstasenko.mixclouddiscover.model.MixcloudShow
 import kotlinx.coroutines.flow.map
 
 sealed class DiscoverSearchState {
-    data class OnDataReady(val response: MixcloudApiResponseDto): DiscoverSearchState()
+    data class OnDataReady(val response: List<MixcloudShow>): DiscoverSearchState()
     object OnError : DiscoverSearchState()
 }
 

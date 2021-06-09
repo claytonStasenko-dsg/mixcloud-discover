@@ -3,15 +3,15 @@ package com.cstasenko.mixclouddiscover.model
 import com.google.gson.annotations.SerializedName
 
 data class MixcloudApiResponseDto(
-    val data: List<Metadata>,
-    val paging: Paging
+    val data: List<MetadataDto>,
+    val paging: PagingDto
 )
 
-data class Metadata(
+data class MetadataDto(
     val key: String,
     val url: String,
     val name: String,
-    val tags: List<Tag>,
+    val tags: List<TagDto>,
     @SerializedName("created_time")
     val createdTime: String,
     @SerializedName("updated_time")
@@ -26,20 +26,20 @@ data class Metadata(
     val listenerCount: Int,
     @SerializedName("repost_count")
     val repostCount: Int,
-    val pictures: Pictures,
+    val pictures: PicturesDto,
     val slug: String,
-    val user: User,
+    val user: UserDto,
     @SerializedName("hidden_stats")
     val hiddenStats: Boolean,
     @SerializedName("audio_length")
     val audioLength: Int
 )
 
-data class Paging(
+data class PagingDto(
     val next: String
 )
 
-data class Pictures(
+data class PicturesDto(
     val small: String,
     val thumbnail: String,
     @SerializedName("medium_mobile")
@@ -58,18 +58,18 @@ data class Pictures(
     val resolution1024: String?
 )
 
-data class Tag(
+data class TagDto(
     val key: String,
     val url: String,
     val name: String
 )
 
-data class User(
+data class UserDto(
     val key: String,
     val url: String,
     val name: String,
     val username: String,
-    val pictures: Pictures
+    val pictures: PicturesDto
 )
 
 //data class PicturesX(
