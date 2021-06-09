@@ -1,8 +1,6 @@
-package com.cstasenko.mixclouddiscover
+package com.cstasenko.mixclouddiscover.di
 
-import androidx.fragment.app.Fragment
-import com.cstasenko.mixclouddiscover.di.ApplicationModule
-import com.cstasenko.mixclouddiscover.ui.home.HomeFragment
+import com.cstasenko.mixclouddiscover.view.HomeFragment
 import dagger.Component
 import javax.inject.Singleton
 

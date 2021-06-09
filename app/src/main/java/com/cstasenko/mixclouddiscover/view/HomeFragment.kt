@@ -1,22 +1,18 @@
-package com.cstasenko.mixclouddiscover.ui.home
+package com.cstasenko.mixclouddiscover.view
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
-import com.cstasenko.mixclouddiscover.DiscoverMixesViewModel
-import com.cstasenko.mixclouddiscover.DiscoverSearchState
-import com.cstasenko.mixclouddiscover.MixcloudRepository
+import com.cstasenko.mixclouddiscover.repository.MixcloudRepository
 import com.cstasenko.mixclouddiscover.R
 import com.cstasenko.mixclouddiscover.databinding.FragmentHomeBinding
 import com.cstasenko.mixclouddiscover.di.ApplicationComponentProvider
-import com.cstasenko.mixclouddiscover.viewModelBuilderFragmentScope
+import com.cstasenko.mixclouddiscover.viewmodel.DiscoverMixesViewModel
+import com.cstasenko.mixclouddiscover.viewmodel.DiscoverSearchState
+import com.cstasenko.mixclouddiscover.viewmodel.viewModelBuilderFragmentScope
 import javax.inject.Inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {

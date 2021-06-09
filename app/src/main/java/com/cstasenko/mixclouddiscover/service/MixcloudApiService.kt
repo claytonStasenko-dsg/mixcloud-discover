@@ -1,4 +1,4 @@
-package com.cstasenko.mixclouddiscover
+package com.cstasenko.mixclouddiscover.service
 
 import com.cstasenko.mixclouddiscover.model.MixcloudApiResponseDto
 import retrofit2.Response

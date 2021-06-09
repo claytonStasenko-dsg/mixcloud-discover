@@ -1,5 +1,6 @@
-package com.cstasenko.mixclouddiscover
+package com.cstasenko.mixclouddiscover.repository
 
+import com.cstasenko.mixclouddiscover.service.MixcloudApiService
 import com.cstasenko.mixclouddiscover.model.MixcloudApiResponseDto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

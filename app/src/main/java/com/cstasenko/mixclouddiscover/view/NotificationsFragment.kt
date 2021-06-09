@@ -1,4 +1,4 @@
-package com.cstasenko.mixclouddiscover.ui.notifications
+package com.cstasenko.mixclouddiscover.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
