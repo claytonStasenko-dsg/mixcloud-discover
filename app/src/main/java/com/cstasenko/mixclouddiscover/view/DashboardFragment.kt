@@ -1,4 +1,4 @@
-package com.cstasenko.mixclouddiscover.ui.dashboard
+package com.cstasenko.mixclouddiscover.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,9 +15,9 @@ class DashboardFragment : Fragment() {
     private lateinit var dashboardViewModel: DashboardViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         dashboardViewModel =
                 ViewModelProvider(this).get(DashboardViewModel::class.java)

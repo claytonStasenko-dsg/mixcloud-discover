@@ -1,4 +1,4 @@
-package com.cstasenko.mixclouddiscover.ui.dashboard
+package com.cstasenko.mixclouddiscover.view
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

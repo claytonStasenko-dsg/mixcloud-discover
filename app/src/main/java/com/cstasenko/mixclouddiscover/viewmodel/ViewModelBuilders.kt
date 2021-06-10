@@ -1,4 +1,4 @@
-package com.cstasenko.mixclouddiscover
+package com.cstasenko.mixclouddiscover.viewmodel
 
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment

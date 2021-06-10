@@ -1,22 +1,19 @@
-package com.cstasenko.mixclouddiscover.ui.home
+package com.cstasenko.mixclouddiscover.view
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
-import com.cstasenko.mixclouddiscover.DiscoverMixesViewModel
-import com.cstasenko.mixclouddiscover.DiscoverSearchState
-import com.cstasenko.mixclouddiscover.MixcloudRepository
 import com.cstasenko.mixclouddiscover.R
+import com.cstasenko.mixclouddiscover.adapter.MixcloudCarouselAdapter
 import com.cstasenko.mixclouddiscover.databinding.FragmentHomeBinding
 import com.cstasenko.mixclouddiscover.di.ApplicationComponentProvider
-import com.cstasenko.mixclouddiscover.viewModelBuilderFragmentScope
+import com.cstasenko.mixclouddiscover.repository.MixcloudRepository
+import com.cstasenko.mixclouddiscover.viewmodel.DiscoverMixesViewModel
+import com.cstasenko.mixclouddiscover.viewmodel.DiscoverSearchState
+import com.cstasenko.mixclouddiscover.viewmodel.viewModelBuilderFragmentScope
 import javax.inject.Inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -32,7 +29,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (requireActivity().application as ApplicationComponentProvider).provideApplicationComponent().inject(this)
+        (requireActivity().application as ApplicationComponentProvider)
+            .provideApplicationComponent().inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,21 +42,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
     }
 
-    private fun handleDiscoverState(discoverSearchState: DiscoverSearchState, binding: FragmentHomeBinding) {
+    private fun handleDiscoverState(
+        discoverSearchState: DiscoverSearchState,
+        binding: FragmentHomeBinding
+    ) {
         when (discoverSearchState) {
             is DiscoverSearchState.OnDataReady -> {
-                binding.textHome.text = discoverSearchState.response.data[0].name
-                binding.mixImage.loadImage(discoverSearchState.response.data[0].pictures.medium)
+                binding.carouselPager.setAdapter(MixcloudCarouselAdapter(discoverSearchState.response) { mixcloudShow ->
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.setData(Uri.parse(mixcloudShow.link))
+                    requireContext().startActivity(intent)
+                })
             }
             is DiscoverSearchState.OnError -> {
-                //TODO error
+                // TODO error
             }
         }
-    }
-
-    fun ImageView.loadImage(imageUrl: String) {
-        Glide.with(this)
-            .load(imageUrl)
-            .into(this)
     }
 }

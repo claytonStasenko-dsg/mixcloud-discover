@@ -1,4 +1,4 @@
-package com.cstasenko.mixclouddiscover.ui.notifications
+package com.cstasenko.mixclouddiscover.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,9 +15,9 @@ class NotificationsFragment : Fragment() {
     private lateinit var notificationsViewModel: NotificationsViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         notificationsViewModel =
                 ViewModelProvider(this).get(NotificationsViewModel::class.java)
