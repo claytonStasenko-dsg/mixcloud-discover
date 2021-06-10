@@ -24,4 +24,8 @@ class DiscoverMixesViewModel(private val mixcloudRepository: MixcloudRepository)
             }
         }.asLiveData()
     }
+
+    private fun buildExtraViews(data: List<MixcloudShow>): List<MixcloudShow> {
+        return listOf(data.last().copy(key = "faked1")) + data + listOf(data.first().copy(key = "faked2"))
+    }
 }

@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface MixcloudApiService {
 
-    @GET("/discover/{keyword}/popular/?limit=1")
+    @GET("/discover/{keyword}/popular/?limit=5")
     suspend fun getMostPopularShowsPerTag(@Path(value = "keyword") keyword: String): Response<MixcloudApiResponseDto>
 
 }

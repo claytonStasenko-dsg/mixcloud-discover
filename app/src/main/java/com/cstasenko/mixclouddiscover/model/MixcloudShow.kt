@@ -4,7 +4,7 @@ data class MixcloudShow(
     val key: String,
     val name: String,
     val link: String,
-    val imageUrlMedium: String,
+    val imageUrl: String,
     val user: User
 )
 

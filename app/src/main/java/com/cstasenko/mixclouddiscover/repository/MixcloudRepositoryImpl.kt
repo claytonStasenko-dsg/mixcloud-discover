@@ -1,7 +1,6 @@
 package com.cstasenko.mixclouddiscover.repository
 
 import com.cstasenko.mixclouddiscover.service.MixcloudApiService
-import com.cstasenko.mixclouddiscover.model.MixcloudApiResponseDto
 import com.cstasenko.mixclouddiscover.model.MixcloudShow
 import com.cstasenko.mixclouddiscover.model.User
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +23,7 @@ class MixcloudRepositoryImpl @Inject constructor(
                     key = it.key,
                     name = it.name,
                     link = it.url,
-                    imageUrlMedium = it.pictures.mediumMobile,
+                    imageUrl = it.pictures.extraLarge,
                     user = User(
                         userName = it.user.name,
                         userAvatarUrl = it.user.pictures.mediumMobile,
