@@ -36,7 +36,7 @@ class MixcloudCarouselAdapter(initialItemList: List<MixcloudShow>, private val c
         fun bind(item: MixcloudShow) {
             binding.coverImage.loadImage(item.imageUrl)
             binding.coverTitle.text = item.name
-            binding.imageCard.setOnClickListener {
+            binding.coverImage.setOnClickListener {
                 clickListenerCallback.invoke(item)
             }
         }

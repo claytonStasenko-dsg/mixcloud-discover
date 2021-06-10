@@ -17,8 +17,8 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/carousel"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:paddingStart="80dp"
         android:paddingEnd="80dp"
         android:visibility="gone"
