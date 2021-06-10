@@ -9,11 +9,13 @@ import com.cstasenko.mixclouddiscover.databinding.ItemCarouselImageCardBinding
 import com.cstasenko.mixclouddiscover.loadImage
 import com.cstasenko.mixclouddiscover.model.MixcloudShow
 
-class MixcloudShowAdapter(private val positionListenerCallback: (() -> Unit)): ListAdapter<MixcloudShow, MixcloudShowAdapter.MixcloudShowViewHolder>(MixcloudShowDiffUtil()){
+class MixcloudShowAdapter(
+    private val positionListenerCallback: (() -> Unit)
+) : ListAdapter<MixcloudShow, MixcloudShowAdapter.MixcloudShowViewHolder>(MixcloudShowDiffUtil()) {
 
     private lateinit var shows: List<MixcloudShow>
 
-    private val runnable = Runnable {  }
+    private val runnable = Runnable { }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MixcloudShowViewHolder {
         return MixcloudShowViewHolder(
@@ -50,6 +52,5 @@ class MixcloudShowAdapter(private val positionListenerCallback: (() -> Unit)): L
         override fun areContentsTheSame(oldItem: MixcloudShow, newItem: MixcloudShow): Boolean {
             return oldItem == newItem
         }
-
     }
 }

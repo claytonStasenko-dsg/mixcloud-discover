@@ -7,13 +7,11 @@ import com.cstasenko.mixclouddiscover.databinding.ItemCarouselImageCardBinding
 import com.cstasenko.mixclouddiscover.loadImage
 import com.cstasenko.mixclouddiscover.model.MixcloudShow
 
-class MixcloudCarouselAdapter(initialItemList: List<MixcloudShow>, private val clickListenerCallback: ((item: MixcloudShow) -> Unit))
-    : RecyclerView.Adapter<MixcloudCarouselAdapter.MixcloudShowViewHolder>(){
-
-    //TODO send this from the view Model into the recyclerview
-    private val itemList: List<MixcloudShow> =
-        listOf(initialItemList.last().copy(key = "faked1")) + initialItemList + listOf(initialItemList.first().copy(key = "faked2"))
-
+class MixcloudCarouselAdapter(
+    private val itemList: List<MixcloudShow>,
+    private val clickListenerCallback: ((item: MixcloudShow) -> Unit)
+) :
+    RecyclerView.Adapter<MixcloudCarouselAdapter.MixcloudShowViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MixcloudShowViewHolder {
         return MixcloudShowViewHolder(
@@ -41,5 +39,4 @@ class MixcloudCarouselAdapter(initialItemList: List<MixcloudShow>, private val c
             }
         }
     }
-
 }

@@ -19,8 +19,7 @@
         android:id="@+id/carousel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingStart="80dp"
-        android:paddingEnd="80dp"
+
         android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

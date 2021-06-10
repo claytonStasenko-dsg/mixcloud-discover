@@ -2,17 +2,17 @@ package com.cstasenko.mixclouddiscover.di
 
 import android.app.Application
 import com.cstasenko.mixclouddiscover.BuildConfig
-import com.cstasenko.mixclouddiscover.service.MixcloudApiService
 import com.cstasenko.mixclouddiscover.repository.MixcloudRepository
 import com.cstasenko.mixclouddiscover.repository.MixcloudRepositoryImpl
+import com.cstasenko.mixclouddiscover.service.MixcloudApiService
 import dagger.Module
 import dagger.Provides
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @Module
 class ApplicationModule(private val application: Application) {
@@ -30,7 +30,11 @@ class ApplicationModule(private val application: Application) {
             .writeTimeout(60L, TimeUnit.SECONDS)
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
-                    level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                    level = if (BuildConfig.DEBUG) {
+                        HttpLoggingInterceptor.Level.BODY
+                    } else {
+                        HttpLoggingInterceptor.Level.NONE
+                    }
                 }
             ).build()
     }
@@ -56,5 +60,4 @@ class ApplicationModule(private val application: Application) {
     fun providesMixcloudRepository(mixcloudApiService: MixcloudApiService): MixcloudRepository {
         return MixcloudRepositoryImpl(mixcloudApiService)
     }
-
 }

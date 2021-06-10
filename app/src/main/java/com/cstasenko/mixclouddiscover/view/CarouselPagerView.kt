@@ -12,13 +12,6 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.cstasenko.mixclouddiscover.databinding.ViewCarouselPagerBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class CarouselPagerView : ConstraintLayout {
     private var _binding: ViewCarouselPagerBinding? = null
@@ -30,7 +23,6 @@ class CarouselPagerView : ConstraintLayout {
     private var totalItemCount: Int = 0
 
     private val carouselHandler = Handler()
-
 
     constructor(context: Context) : super(context) {
         init()
@@ -83,17 +75,11 @@ class CarouselPagerView : ConstraintLayout {
                 )
             )
         }
-
-//        viewPager.currentItem++
-    }
-
-    suspend fun ViewPager2.scrollForever(interval: Long) {
-
     }
 
     private fun buildCompositePageTransformer(): CompositePageTransformer {
         return CompositePageTransformer().apply {
-            addTransformer(MarginPageTransformer(40))
+            addTransformer(MarginPageTransformer(16))
             addTransformer(ViewPager2.PageTransformer(transformFocusImage()))
         }
     }

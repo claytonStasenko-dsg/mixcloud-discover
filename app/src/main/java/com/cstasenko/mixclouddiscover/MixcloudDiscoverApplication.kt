@@ -9,11 +9,13 @@ import com.cstasenko.mixclouddiscover.di.DaggerApplicationComponent
 class MixcloudDiscoverApplication : Application(), ApplicationComponentProvider {
 
     companion object {
-        @Volatile private var APPLICATION_COMPONENT_INSTANCE: ApplicationComponent? = null
+        @Volatile
+        private var APPLICATION_COMPONENT_INSTANCE: ApplicationComponent? = null
 
         fun getApplicationComponent(app: Application): ApplicationComponent {
-           return APPLICATION_COMPONENT_INSTANCE ?: synchronized(this) {
-                APPLICATION_COMPONENT_INSTANCE ?: buildComponent(app).also { APPLICATION_COMPONENT_INSTANCE = it }
+            return APPLICATION_COMPONENT_INSTANCE ?: synchronized(this) {
+                APPLICATION_COMPONENT_INSTANCE
+                    ?: buildComponent(app).also { APPLICATION_COMPONENT_INSTANCE = it }
             }
         }
 
@@ -22,7 +24,6 @@ class MixcloudDiscoverApplication : Application(), ApplicationComponentProvider 
                 ApplicationModule(app)
             )
                 .build()
-
     }
 
     override fun provideApplicationComponent(): ApplicationComponent {
