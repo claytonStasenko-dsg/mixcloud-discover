@@ -14,9 +14,47 @@ class MixcloudRepositoryImpl @Inject constructor(
     private val apiService: MixcloudApiService
 ) : MixcloudRepository {
 
-    override fun getTopShows(): Flow<List<MixcloudShow>?> {
+    override fun discoverTopShowsForTag(tag: String): Flow<List<MixcloudShow>> {
+        return flow {
+            emit(apiService.getMostPopularShowsPerTag(tag))
+        }.map { response ->
+            response.data.map {
+                MixcloudShow(
+                    key = it.key,
+                    name = it.name,
+                    link = it.url,
+                    imageUrl = it.pictures.extraLarge,
+                    user = User(
+                        userName = it.user.name,
+                        userAvatarUrl = it.user.pictures.mediumMobile
+                    )
+                )
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    override fun discoverTopShowsForNts(): Flow<List<MixcloudShow>> {
         return flow {
             emit(apiService.getMostPopularShowsPerTag("nts"))
+        }.map { response ->
+            response.data.map {
+                MixcloudShow(
+                    key = it.key,
+                    name = it.name,
+                    link = it.url,
+                    imageUrl = it.pictures.extraLarge,
+                    user = User(
+                        userName = it.user.name,
+                        userAvatarUrl = it.user.pictures.mediumMobile
+                    )
+                )
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    override fun getLastTenUploadsForUser(): Flow<List<MixcloudShow>> {
+        return flow {
+            emit(apiService.getLastTenShowsPerUser())
         }.map { response ->
             response.data.map {
                 MixcloudShow(
