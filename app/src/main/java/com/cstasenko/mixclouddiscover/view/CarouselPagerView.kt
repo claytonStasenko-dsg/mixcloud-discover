@@ -76,7 +76,7 @@ class CarouselPagerView : ConstraintLayout {
 
     private fun buildCompositePageTransformer(): CompositePageTransformer {
         return CompositePageTransformer().apply {
-            addTransformer(MarginPageTransformer(16))
+            addTransformer(MarginPageTransformer(CAROUSEL_CARD_MARGIN))
             addTransformer(ViewPager2.PageTransformer(transformFocusImage()))
         }
     }
