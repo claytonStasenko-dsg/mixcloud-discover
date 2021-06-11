@@ -2,6 +2,7 @@ package com.cstasenko.mixclouddiscover.view
 
 import android.content.Context
 import android.os.Handler
+import android.os.Looper
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -14,15 +15,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.cstasenko.mixclouddiscover.databinding.ViewCarouselPagerBinding
 
 class CarouselPagerView : ConstraintLayout {
-    private var _binding: ViewCarouselPagerBinding? = null
-    private val binding: ViewCarouselPagerBinding
-        get() = _binding!!
-
     private lateinit var viewPager: ViewPager2
     private lateinit var internalRecyclerView: RecyclerView
     private var totalItemCount: Int = 0
 
-    private val carouselHandler = Handler()
+    private val carouselHandler: Handler = Handler(Looper.getMainLooper())
 
     constructor(context: Context) : super(context) {
         init()
@@ -60,7 +57,7 @@ class CarouselPagerView : ConstraintLayout {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     carouselHandler.removeCallbacks(carouselRunnable)
-                    carouselHandler.postDelayed(carouselRunnable, 2000)
+                    carouselHandler.postDelayed(carouselRunnable, SCROLL_INTERVAL)
                 }
             })
             setCurrentItem(1, false)
@@ -106,5 +103,10 @@ class CarouselPagerView : ConstraintLayout {
                 recyclerView.scrollToPosition(itemCount - 2)
             }
         }
+    }
+
+    companion object {
+        const val SCROLL_INTERVAL: Long = 2000
+        const val CAROUSEL_CARD_MARGIN: Int = 16
     }
 }

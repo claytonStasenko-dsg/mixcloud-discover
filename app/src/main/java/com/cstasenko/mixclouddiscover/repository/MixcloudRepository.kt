@@ -4,6 +4,7 @@ import com.cstasenko.mixclouddiscover.model.MixcloudShow
 import kotlinx.coroutines.flow.Flow
 
 interface MixcloudRepository {
-
-    fun getTopShows(): Flow<List<MixcloudShow>?>
+    fun discoverTopShowsForTag(tag: String): Flow<List<MixcloudShow>>
+    fun discoverTopShowsForNts(): Flow<List<MixcloudShow>>
+    fun getLastTenUploadsForUser(): Flow<List<MixcloudShow>>
 }

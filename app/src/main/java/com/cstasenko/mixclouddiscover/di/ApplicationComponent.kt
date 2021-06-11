@@ -1,6 +1,8 @@
 package com.cstasenko.mixclouddiscover.di
 
-import com.cstasenko.mixclouddiscover.view.HomeFragment
+import com.cstasenko.mixclouddiscover.view.DemoFragment
+import com.cstasenko.mixclouddiscover.view.DiscoverFragment
+import com.cstasenko.mixclouddiscover.view.UserShowsFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -10,5 +12,7 @@ import javax.inject.Singleton
 )
 interface ApplicationComponent {
 
-    fun inject(fragment: HomeFragment)
+    fun inject(fragment: DemoFragment)
+    fun inject(fragment: DiscoverFragment)
+    fun inject(fragment: UserShowsFragment)
 }

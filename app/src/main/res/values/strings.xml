@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Mixcloud Discover</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_demo">Demo</string>
+    <string name="title_discover">Discover</string>
+    <string name="title_users">Users</string>
+    <string name="nts_demo_text_description">The Top 5 Most Popular Shows for tag \'NTS\' aka NTS Radio</string>
+    <string name="search_directive_text">Please enter a tag to search:</string>
+    <string name="search_hint_text_disco">Disco</string>
+    <string name="button_text_search">Search</string>
+    <string name="user_shows_ten_most_recent_text">The 10 Most Recent Shows from The Lot Radio in Brooklyn \n</string>
+    <string name="search_feature_preview">COMING SOON: You will be able to search for users and see their 10 most recent shows</string>
 </resources>

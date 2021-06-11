@@ -18,7 +18,7 @@
         tools:src="@drawable/theo_parrish_mixcloud_medium" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/card_text"
+        android:id="@+id/card_text_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/black"
@@ -37,10 +37,6 @@
             android:maxLines="2"
             android:textColor="@color/white"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             tools:text="Theo Parrish Presents: eargoggles (6 Hour Mix) - NTS 10 - 22nd April 2021" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

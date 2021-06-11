@@ -10,4 +10,7 @@ interface MixcloudApiService {
     suspend fun getMostPopularShowsPerTag(
         @Path(value = "keyword") keyword: String
     ): MixcloudApiResponseDto
+
+    @GET("thelotradio/cloudcasts/?limit=10")
+    suspend fun getLastTenShowsPerUser(): MixcloudApiResponseDto
 }

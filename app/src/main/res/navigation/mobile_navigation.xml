@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_demo">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.cstasenko.mixclouddiscover.view.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_demo"
+        android:name="com.cstasenko.mixclouddiscover.view.DemoFragment"
+        android:label="@string/title_demo"
+        tools:layout="@layout/fragment_demo" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.cstasenko.mixclouddiscover.view.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_discover"
+        android:name="com.cstasenko.mixclouddiscover.view.DiscoverFragment"
+        android:label="@string/title_discover"
+        tools:layout="@layout/fragment_discover" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.cstasenko.mixclouddiscover.view.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_user_shows"
+        android:name="com.cstasenko.mixclouddiscover.view.UserShowsFragment"
+        android:label="@string/title_users"
+        tools:layout="@layout/fragment_user_shows" />
 </navigation>
