@@ -8,13 +8,13 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/demo_info_text"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/view_size_match_constraints"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/nts_demo_text_description"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/primary_margin"
+        android:layout_marginEnd="@dimen/primary_margin"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +23,8 @@
 
     <com.cstasenko.mixclouddiscover.view.CarouselPagerView
         android:id="@+id/carousel_pager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/view_size_match_constraints"
+        android:layout_height="@dimen/view_size_match_constraints"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@+id/demo_info_text"
         app:layout_constraintStart_toStartOf="parent"

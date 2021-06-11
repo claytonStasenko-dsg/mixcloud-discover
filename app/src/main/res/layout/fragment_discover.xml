@@ -19,7 +19,7 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/search_text_layout"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/view_size_match_constraints"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/instructions_text"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +29,8 @@
             android:id="@+id/search_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/primary_margin"
+            android:layout_marginEnd="@dimen/primary_margin"
             android:inputType="text"
             android:maxLines="1"
             android:cursorVisible="true"
@@ -48,7 +48,7 @@
         android:text="@string/button_text_search"
         android:textColor="@color/white"
         android:background="@drawable/button_primary_selector"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/search_button_top_margin"
         android:enabled="false"
         app:layout_constraintTop_toBottomOf="@+id/search_text_layout"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,8 +66,8 @@
 
     <com.cstasenko.mixclouddiscover.view.ProgressBarWidget
         android:id="@+id/progress_bar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/view_size_match_constraints"
+        android:layout_height="@dimen/view_size_match_constraints"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

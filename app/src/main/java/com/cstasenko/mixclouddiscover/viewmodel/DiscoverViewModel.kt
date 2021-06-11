@@ -24,12 +24,8 @@ class DiscoverShowsViewModel(private val mixcloudRepository: MixcloudRepository)
 
     val ntsTopShows: LiveData<DiscoverSearchState> by lazy {
         DiscoverSearchState.Loading
-        mixcloudRepository.discoverTopShowsForNts().map {
-            if (it != null) {
-                DiscoverSearchState.OnDataReady(buildExtraViews(it))
-            } else {
-                DiscoverSearchState.OnError
-            }
+        mixcloudRepository.discoverTopShowsForTag(SEARCH_TERM_NTS).map {
+            DiscoverSearchState.OnDataReady(buildExtraViews(it))
         }.asLiveData()
     }
 
@@ -37,20 +33,22 @@ class DiscoverShowsViewModel(private val mixcloudRepository: MixcloudRepository)
         _topShows.value = DiscoverSearchState.Loading
         viewModelScope.launch {
             mixcloudRepository.discoverTopShowsForTag(tag).collect {
-                if (it != null) {
-                    _topShows.postValue(DiscoverSearchState.OnDataReady(buildExtraViews(it)))
-                } else {
-                    _topShows.postValue(DiscoverSearchState.OnError)
-                }
+                _topShows.postValue(DiscoverSearchState.OnDataReady(buildExtraViews(it)))
             }
         }
     }
 
     private fun buildExtraViews(data: List<MixcloudShow>): List<MixcloudShow> {
         return listOf(
-            data.last().copy(key = "faked1")) +
+            data.last().copy(key = DUMMY_VIEW_ONE)) +
                 data +
                 listOf(
-                    data.first().copy(key = "faked2"))
+                    data.first().copy(key = DUMMY_VIEW_TWO))
+    }
+
+    companion object {
+        const val SEARCH_TERM_NTS = "nts"
+        const val DUMMY_VIEW_ONE = "faked1"
+        const val DUMMY_VIEW_TWO = "faked2"
     }
 }

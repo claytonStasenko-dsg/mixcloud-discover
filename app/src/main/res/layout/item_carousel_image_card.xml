@@ -8,8 +8,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/cover_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/view_size_match_constraints"
+        android:layout_height="@dimen/view_size_match_constraints"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/card_text_layout"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/view_size_match_constraints"
         android:layout_height="wrap_content"
         android:background="@color/black"
         android:gravity="center"
@@ -31,8 +31,8 @@
             android:id="@+id/cover_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="@dimen/carousel_image_card_title_margin"
+            android:layout_marginEnd="@dimen/carousel_image_card_title_margin"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@color/white"
@@ -40,17 +40,5 @@
             tools:text="Theo Parrish Presents: eargoggles (6 Hour Mix) - NTS 10 - 22nd April 2021" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/cover_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="523dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/cover_image" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

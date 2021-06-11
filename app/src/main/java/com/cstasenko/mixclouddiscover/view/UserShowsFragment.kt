@@ -35,14 +35,16 @@ class UserShowsFragment : Fragment(R.layout.fragment_user_shows) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bindng = FragmentUserShowsBinding.bind(view)
+        val binding = FragmentUserShowsBinding.bind(view)
 
-        // also showing progress bar here due to initial lazy loading of list
-        bindng.progressBar.showProgressBar()
+        userShowsViewModel.searchForMostRecentShowsByUser()
+        observeUserShows(binding)
+    }
 
+    private fun observeUserShows(binding: FragmentUserShowsBinding) {
         userShowsViewModel.userShows.observe(viewLifecycleOwner, {
-                handleUserSearchState(it, bindng)
-            })
+            handleUserSearchState(it, binding)
+        })
     }
 
     private fun handleUserSearchState(
@@ -58,7 +60,7 @@ class UserShowsFragment : Fragment(R.layout.fragment_user_shows) {
                 binding.progressBar.hideProgressBar()
                 binding.carouselPager.visibility = View.VISIBLE
                 binding.carouselPager.setAdapter(
-                    MixcloudCarouselAdapter(userSearchState.data) { mixcloudShow ->
+                    MixcloudCarouselAdapter(userSearchState.response) { mixcloudShow ->
                     val intent = Intent(Intent.ACTION_VIEW)
                     intent.setData(Uri.parse(mixcloudShow.link))
                     requireContext().startActivity(intent)

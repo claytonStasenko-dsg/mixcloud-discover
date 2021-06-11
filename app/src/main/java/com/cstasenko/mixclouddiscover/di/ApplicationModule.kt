@@ -25,9 +25,9 @@ class ApplicationModule(private val application: Application) {
     @Singleton
     fun providesOkHttpClient(): OkHttpClient {
         return OkHttpClient().newBuilder()
-            .connectTimeout(60L, TimeUnit.SECONDS)
-            .readTimeout(60L, TimeUnit.SECONDS)
-            .writeTimeout(60L, TimeUnit.SECONDS)
+            .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
                     level = if (BuildConfig.DEBUG) {
@@ -43,7 +43,7 @@ class ApplicationModule(private val application: Application) {
     @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.mixcloud.com")
+            .baseUrl(MIXCLOUD_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -59,5 +59,10 @@ class ApplicationModule(private val application: Application) {
     @Singleton
     fun providesMixcloudRepository(mixcloudApiService: MixcloudApiService): MixcloudRepository {
         return MixcloudRepositoryImpl(mixcloudApiService)
+    }
+
+    companion object {
+        const val TIMEOUT: Long = 60L
+        const val MIXCLOUD_API_BASE_URL = "https://api.mixcloud.com"
     }
 }

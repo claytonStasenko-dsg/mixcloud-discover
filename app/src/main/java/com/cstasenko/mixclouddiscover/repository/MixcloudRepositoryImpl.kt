@@ -16,26 +16,7 @@ class MixcloudRepositoryImpl @Inject constructor(
 
     override fun discoverTopShowsForTag(tag: String): Flow<List<MixcloudShow>> {
         return flow {
-            emit(apiService.getMostPopularShowsPerTag(tag))
-        }.map { response ->
-            response.data.map {
-                MixcloudShow(
-                    key = it.key,
-                    name = it.name,
-                    link = it.url,
-                    imageUrl = it.pictures.extraLarge,
-                    user = User(
-                        userName = it.user.name,
-                        userAvatarUrl = it.user.pictures.mediumMobile
-                    )
-                )
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
-    override fun discoverTopShowsForNts(): Flow<List<MixcloudShow>> {
-        return flow {
-            emit(apiService.getMostPopularShowsPerTag("nts"))
+            emit(apiService.getMostPopularShowsPerTag(tag, DISCOVER_RESULT_LIMIT))
         }.map { response ->
             response.data.map {
                 MixcloudShow(
@@ -54,7 +35,7 @@ class MixcloudRepositoryImpl @Inject constructor(
 
     override fun getLastTenUploadsForUser(): Flow<List<MixcloudShow>> {
         return flow {
-            emit(apiService.getLastTenShowsPerUser())
+            emit(apiService.getLastTenShowsPerUser(USER_SHOWS_RESULT_LIMIT))
         }.map { response ->
             response.data.map {
                 MixcloudShow(
@@ -69,5 +50,10 @@ class MixcloudRepositoryImpl @Inject constructor(
                 )
             }
         }.flowOn(Dispatchers.IO)
+    }
+
+    companion object {
+        const val DISCOVER_RESULT_LIMIT = 5
+        const val USER_SHOWS_RESULT_LIMIT = 10
     }
 }

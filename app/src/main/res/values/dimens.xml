@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="view_size_match_constraints">0dp</dimen>
+    <dimen name="pager_carousel_padding">80dp</dimen>
+    <dimen name="primary_margin">16dp</dimen>
+    <dimen name="coming_soon_text_start_margin">20dp</dimen>
+    <dimen name="carousel_image_card_title_margin">4dp</dimen>
+    <dimen name="search_button_top_margin">8dp</dimen>
 </resources>
