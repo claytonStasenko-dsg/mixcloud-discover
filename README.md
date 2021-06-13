@@ -31,7 +31,7 @@ Search for most recent mixes by user. The 10 most recent shows are displayed in 
 ![image](https://user-images.githubusercontent.com/58704239/121705871-16724680-caa3-11eb-8782-1d96aef7b1ed.png)
 
 ## Features to be Added (Listed in Order of Priority)
-* Add Github Actions pipeline
+* **Completed 6/13:** ~~Add Github Actions pipeline~~
 * Full error handling (Especially Retrofit error handling)
 * Enlarge focus area for EditText on DiscoverFragment
 * User search functionality
@@ -43,7 +43,7 @@ Search for most recent mixes by user. The 10 most recent shows are displayed in 
 * Dependency Injection cleanup (add scoping, break up modules if needed)
 * Code cleanup (make better use of strings.xml, implement custom rules for ktlint)
 
-**All of the above bullet points will soon be added as cards under the Projects tab**
+**[All of the above bullet points are reflected in the Projects tab](https://github.com/claytonStasenko-dsg/mixcloud-discover/projects/1)**
 
 
 
