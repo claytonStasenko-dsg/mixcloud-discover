@@ -18,7 +18,7 @@ inline fun <reified VM : ViewModel> Fragment.viewModelBuilderFragmentScope(
         storeProducer = { viewModelStore },
         factoryProducer = {
             object : ViewModelProvider.Factory {
-                override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     @Suppress("UNCHECKED_CAST") // Casting T as ViewModel
                     return viewModelInitializer.invoke() as T
                 }
